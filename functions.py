@@ -156,17 +156,21 @@ def break_point():
         bad_response()
 
 
-def buy(account_balance, history, inventory, product, price, quantity):
+def buy(account_balance, history, inventory, product, price, quantity, selling_price):
     item_name = product
     item_quantity = quantity
     cost_price = price
+    list_price = selling_price
     purchase_price = item_quantity * cost_price
+    if purchase_price > account_balance:
+        return 0
     history_message = f"Zakupiono przedmiot: \"{item_name}\", w ilości: {item_quantity}. Cena za sztuke: {round(cost_price, 2)} PLN. Łączna cena za zamówienie: {round(purchase_price, 2)} PLN."
     history.append(history_message)
     if item_name.upper() not in inventory:
         inventory[item_name.upper()] = {
             "item_name": item_name,
-            "quantity": item_quantity
+            "quantity": item_quantity,
+            "list_price": list_price
         }
     else:
         inventory[item_name.upper()]["quantity"] += item_quantity
@@ -225,53 +229,24 @@ def inventory_overview(inventory):
             print(f"Stan magazynu dla przedmiotu \"{name}\": {quantity}.")
 
 
-def sell(history, inventory):
-    item_to_sell = None
-    while not isinstance(item_to_sell, str):
-        item_to_sell = str(
-            input("Podaj nazwę sprzedawanego przedmiotu: ")).upper()
-        if item_to_sell not in inventory:
-            print("Podany produkt nie znajduje się w magazynie.")
+def sell(history, inventory, item, sell_quantity):
+    item_to_sell = item.upper()
+    if item_to_sell not in inventory:
+        return 0
+    else:
+        item_name = inventory.get(item_to_sell, {}).get("item_name")
+        list_price = inventory.get(item_to_sell, {}).get("list_price")
+        quantity = inventory.get(item_to_sell, {}).get("quantity")
+        selling_quantity = sell_quantity
+        available_quantity_left = quantity - selling_quantity
+        if available_quantity_left < 0:
             return 0
         else:
-            item_name = inventory.get(item_to_sell, {}).get("item_name")
-            list_price = inventory.get(item_to_sell, {}).get("list_price")
-            quantity = inventory.get(item_to_sell, {}).get("quantity")
-            selling_quantity = None
-            while not isinstance(selling_quantity, int):
-                try:
-                    selling_quantity = int(
-                        input("Podaj liczbe sprzedawanych przedmiotów: "))
-                    confirm_selling_quantity = confirm(selling_quantity)
-                    selling_quantity = check_if_number_positive(
-                        confirm_selling_quantity, selling_quantity, "Błąd. Liczba sprzedawanych produktów nie może być mniejsza lub równa 0.")
-                except ValueError:
-                    bad_response()
-                    selling_quantity = None
-                if selling_quantity == None:
-                    continue
-                else:
-                    available_quantity_left = quantity - selling_quantity
-                    if available_quantity_left >= 0:
-                        break
-                    else:
-                        print(
-                            "Brak wystarczającej ilości dostępnych produktów do sprzedaży. Spróbuj sprzedać mniejszą ilość.")
-                        stop_request = break_point()
-                        if stop_request:
-                            selling_price = 0
-                            return selling_price
-                        selling_quantity = None
             selling_price = selling_quantity * list_price
-            message = f"Sprzedaż produktu \"{item_name}\". Ilość sprzedawanych sztuk: {selling_quantity}. Łączna cena sprzedaży: {round(selling_price, 2)} PLN"
-            confirm_selling = confirm(message)
-            if not confirm_selling:
-                item_to_sell = None
-            else:
-                inventory[item_to_sell]["quantity"] = available_quantity_left
-                history_message = f"Sprzedano \"{item_name}\" w ilość sztuk: {selling_quantity}. Cena sprzedaży: {round(selling_price, 2)} PLN."
-                history.append(history_message)
-                return selling_price
+            inventory[item_to_sell]["quantity"] = available_quantity_left
+            history_message = f"Sprzedano \"{item_name}\" w ilość sztuk: {selling_quantity}. Cena sprzedaży: {round(selling_price, 2)} PLN."
+            history.append(history_message)
+            return selling_price
 
 
 def inventory_correction(history, inventory):

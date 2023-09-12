@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    account_balance = manager.account_balance
+    account_balance = round(manager.account_balance, 2)
     inventory = manager.inventory
 
     return render_template('index.html', account_balance=account_balance, inventory=inventory)
@@ -24,9 +24,23 @@ def index():
 def process_buy():
     purchase_product = request.form.get('purchase_product')
     purchase_price = float(request.form.get('purchase_price'))
+    selling_price = float(request.form.get('selling_price'))
     purchase_quantity = int(request.form.get('purchase_quantity'))
-    manager.account_balance -= buy(manager.account_balance,
-                                   manager.history, manager.inventory, purchase_product, purchase_price, purchase_quantity)
+    manager.account_balance -= round(buy(manager.account_balance,
+                                         manager.history, manager.inventory, purchase_product, purchase_price, purchase_quantity, selling_price), 2)
+    save_data.save_history(manager.history)
+    save_data.save_balance(manager.account_balance)
+    save_data.save_inventory(manager.inventory)
+
+    return render_template('index.html', account_balance=manager.account_balance, inventory=manager.inventory)
+
+
+@app.route('/sell', methods=['POST'])
+def process_sell():
+    sell_product = request.form.get('sell_product')
+    sell_quantity = int(request.form.get('sell_quantity'))
+    manager.account_balance += sell(manager.history,
+                                    manager.inventory, sell_product, sell_quantity)
     save_data.save_history(manager.history)
     save_data.save_balance(manager.account_balance)
     save_data.save_inventory(manager.inventory)
@@ -36,7 +50,7 @@ def process_buy():
 
 @app.route('/historia/')
 def history():
-    # Tutaj możesz wstawić kod do pobierania historii operacji
+
     return render_template('history.html')
 
 

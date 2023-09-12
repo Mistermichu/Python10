@@ -30,3 +30,12 @@ Zakupiono przedmiot: "Wyka³aczka", w iloœci: 1. Cena za sztuke: 1.0 PLN. £¹czna 
 Zakupiono przedmiot: "Worki na œmieci", w iloœci: 8. Cena za sztuke: 6.99 PLN. £¹czna cena za zamówienie: 55.92 PLN.
 Zakupiono przedmiot: "Nesquik", w iloœci: 1. Cena za sztuke: 12.99 PLN. £¹czna cena za zamówienie: 12.99 PLN.
 Zakupiono przedmiot: "Rower biegowy", w iloœci: 6. Cena za sztuke: 399.99 PLN. £¹czna cena za zamówienie: 2399.94 PLN.
+Zakupiono przedmiot: "Trampolina", w iloœci: 1. Cena za sztuke: 6000.0 PLN. £¹czna cena za zamówienie: 6000.0 PLN.
+Zakupiono przedmiot: "Chustaeczka", w iloœci: 1. Cena za sztuke: 0.01 PLN. £¹czna cena za zamówienie: 0.01 PLN.
+Zakupiono przedmiot: "Chusteczka", w iloœci: 1. Cena za sztuke: 0.01 PLN. £¹czna cena za zamówienie: 0.01 PLN.
+Zakupiono przedmiot: "Lody", w iloœci: 10. Cena za sztuke: 3.25 PLN. £¹czna cena za zamówienie: 32.5 PLN.
+Zakupiono przedmiot: "Wyka³aczki", w iloœci: 10. Cena za sztuke: 2.4 PLN. £¹czna cena za zamówienie: 24.0 PLN.
+Sprzedano "Wyka³aczki" w iloœæ sztuk: 1. Cena sprzeda¿y: 5.89 PLN.
+Sprzedano "Wyka³aczki" w iloœæ sztuk: 3. Cena sprzeda¿y: 17.67 PLN.
+Sprzedano "Wyka³aczki" w iloœæ sztuk: -7. Cena sprzeda¿y: -41.23 PLN.
+Sprzedano "Chustaeczka" w iloœæ sztuk: 1. Cena sprzeda¿y: 2.5 PLN.
