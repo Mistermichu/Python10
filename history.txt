@@ -42,3 +42,5 @@ Sprzedano "Chustaeczka" w iloœæ sztuk: 1. Cena sprzeda¿y: 2.5 PLN.
 Sprzedano "Lody" w iloœæ sztuk: 1. Cena sprzeda¿y: 6.9 PLN.
 Z konta odjêto: -400.0 PLN.
 Do konta dodano: 550.0 PLN.
+Zakupiono przedmiot: "Bu³ki", w iloœci: 100. Cena za sztuke: 0.83 PLN. £¹czna cena za zamówienie: 83.0 PLN.
+Sprzedano "Bu³ki" w iloœæ sztuk: 10. Cena sprzeda¿y: 13.0 PLN.

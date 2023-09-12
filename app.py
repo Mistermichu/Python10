@@ -60,9 +60,18 @@ def process_balance():
 
 
 @app.route('/historia/')
-def history():
+@app.route('/historia/<int:start>/<int:end>')
+def history(start=None, end=None):
+    if start is None or end is None:
+        history_data = manager.history
+    else:
+        if start < 1:
+            start = 1
+        if end > len(manager.history):
+            end = len(manager.history)
+        history_data = manager.history[start - 1:end]
 
-    return render_template('history.html')
+    return render_template('history.html', history_data=history_data)
 
 
 if __name__ == '__main__':
