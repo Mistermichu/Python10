@@ -156,75 +156,20 @@ def break_point():
         bad_response()
 
 
-def buy(account_balance, history, inventory):
-    item_name = None
-    while not isinstance(item_name, str):
-        item_name = str(input("Podaj nazwe przedmiotu: "))
-        item_name_confirm = confirm(item_name)
-        if item_name_confirm == False:
-            item_name = None
-    balance_check = False
-    while not balance_check:
-        item_quantity = None
-        while not isinstance(item_quantity, int):
-            try:
-                item_quantity = int(
-                    input("Podaj liczbe zakupionych przedmiotów: "))
-                item_quantity_confirm = confirm(item_quantity)
-                item_quantity = check_if_number_positive(
-                    item_quantity_confirm, item_quantity, "Bład. Liczba kupowanych sztuk nie może być mniejsza lub równa 0.")
-            except ValueError:
-                bad_response()
-        cost_price = None
-        while not isinstance(cost_price, float):
-            try:
-                cost_message = "Podaj cenę zakupu dla jednej sztuki towaru: "
-                cost_price = decimal_count_check(cost_price, cost_message)
-                cost_confirm = confirm(cost_price)
-                cost_price = check_if_number_positive(
-                    cost_confirm, cost_price, "Bład. Cena zakupu nie może być mniejsza lub równa 0.")
-            except ValueError:
-                bad_response()
-        purchase_price = item_quantity * cost_price
-        if account_balance - purchase_price < 0:
-            print(
-                f"Błąd. Nie można zakupić przedmiotu \"{item_name}\" w ilości: {item_quantity}, ponieważ saldo konta nie może być ujemne")
-            print("Spróbuj ponownie.")
-            stop_request = break_point()
-            if stop_request:
-                purchase_price = 0
-                return purchase_price
-            cost_price = None
-            item_quantity = None
-            balance_check = False
-        else:
-            balance_check = True
-    list_price = None
-    while not isinstance(list_price, float):
-        try:
-            list_message = "Podaj docelową cene sprzedaży 1 sztuki towaru: "
-            list_price = decimal_count_check(list_price, list_message)
-            list_price_confirm = confirm(list_price)
-            list_price = check_if_number_positive(
-                list_price_confirm, list_price, "Bład. Cena sprzedaży nie może być mniejsza lub równa 0.")
-        except ValueError:
-            bad_response()
-    history_message = f"Zakupiono przedmiot: \"{item_name}\", w ilości: {item_quantity}. Cena za sztuke: {round(cost_price, 2)} PLN. Łączna cena za zamówienie: {round(purchase_price, 2)} PLN. Cene sprzedaży produktu ustalono na: {round(list_price, 2)} PLN."
+def buy(account_balance, history, inventory, product, price, quantity):
+    item_name = product
+    item_quantity = quantity
+    cost_price = price
+    purchase_price = item_quantity * cost_price
+    history_message = f"Zakupiono przedmiot: \"{item_name}\", w ilości: {item_quantity}. Cena za sztuke: {round(cost_price, 2)} PLN. Łączna cena za zamówienie: {round(purchase_price, 2)} PLN."
     history.append(history_message)
-    print(history_message)
     if item_name.upper() not in inventory:
         inventory[item_name.upper()] = {
             "item_name": item_name,
-            "list_price": list_price,
             "quantity": item_quantity
         }
     else:
-        inventory[item_name.upper()]["list_price"] = list_price
         inventory[item_name.upper()]["quantity"] += item_quantity
-    available_item_quantity = inventory.get(
-        item_name.upper(), {}).get("quantity")
-    print(
-        f"Dostępna ilość przedmiotu \"{item_name}\": {available_item_quantity}")
     return purchase_price
 
 

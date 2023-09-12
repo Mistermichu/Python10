@@ -15,6 +15,39 @@
         </li>
         {% endfor %}
     </ul>
+
+    <h2>Formularz zakupu</h2>
+    <form method="POST" action="/buy">
+        <label for="purchase_product">Nazwa produktu:</label>
+        <input type="text" id="purchase_product" name="purchase_product" required><br>
+
+        <label for="purchase_price">Cena (PLN):</label>
+        <input type="number" id="purchase_price" name="purchase_price" step="0.01" required><br>
+
+        <label for="purchase_quantity">Ilość:</label>
+        <input type="number" id="purchase_quantity" name="purchase_quantity" required><br>
+
+        <input type="submit" value="Kup">
+    </form>
+
+    <h2>Formularz sprzedaży</h2>
+    <form method="POST" action="/sell">
+        <label for="sell_product">Nazwa produktu:</label>
+        <input type="text" id="sell_product" name="sell_product" required><br>
+
+        <label for="sell_quantity">Ilość:</label>
+        <input type="number" id="sell_quantity" name="sell_quantity" required><br>
+
+        <input type="submit" value="Sprzedaj">
+    </form>
+
+    <h2>Formularz zmiany salda</h2>
+    <form method="POST" action="/balance">
+        <label for="balance_change">Wartość zmiany salda (PLN):</label>
+        <input type="number" id="balance_change" name="balance_change" step="0.01" required><br>
+
+        <input type="submit" value="Zmień saldo">
+    </form>
 </body>
 
 </html>

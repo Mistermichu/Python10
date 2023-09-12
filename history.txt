@@ -25,3 +25,8 @@ Zakupiono przedmiot: "Deskorolka", w iloœci: 10. Cena za sztuke: 60.33 PLN. £¹cz
 Sprzedano "Deskorolka" w iloœæ sztuk: 1. Cena sprzeda¿y: 105.99 PLN.
 Sprzedano "Deskorolka" w iloœæ sztuk: 1. Cena sprzeda¿y: 105.99 PLN.
 Sprzedano "Hulajnoga" w iloœæ sztuk: 1. Cena sprzeda¿y: 210.2 PLN.
+Zakupiono przedmiot: "Papier Toaletowy", w iloœci: 200. Cena za sztuke: 10.0 PLN. £¹czna cena za zamówienie: 2000.0 PLN.
+Zakupiono przedmiot: "Wyka³aczka", w iloœci: 1. Cena za sztuke: 1.0 PLN. £¹czna cena za zamówienie: 1.0 PLN.
+Zakupiono przedmiot: "Worki na œmieci", w iloœci: 8. Cena za sztuke: 6.99 PLN. £¹czna cena za zamówienie: 55.92 PLN.
+Zakupiono przedmiot: "Nesquik", w iloœci: 1. Cena za sztuke: 12.99 PLN. £¹czna cena za zamówienie: 12.99 PLN.
+Zakupiono przedmiot: "Rower biegowy", w iloœci: 6. Cena za sztuke: 399.99 PLN. £¹czna cena za zamówienie: 2399.94 PLN.
