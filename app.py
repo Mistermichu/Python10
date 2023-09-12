@@ -48,6 +48,17 @@ def process_sell():
     return render_template('index.html', account_balance=manager.account_balance, inventory=manager.inventory)
 
 
+@app.route('/balance', methods=['POST'])
+def process_balance():
+    balance_change = float(request.form.get('balance_change'))
+    manager.account_balance += balance(manager.history,
+                                       balance_change, manager.account_balance)
+    save_data.save_history(manager.history)
+    save_data.save_balance(manager.account_balance)
+
+    return render_template('index.html', account_balance=manager.account_balance, inventory=manager.inventory)
+
+
 @app.route('/historia/')
 def history():
 

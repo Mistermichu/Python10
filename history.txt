@@ -39,3 +39,6 @@ Sprzedano "Wyka³aczki" w iloœæ sztuk: 1. Cena sprzeda¿y: 5.89 PLN.
 Sprzedano "Wyka³aczki" w iloœæ sztuk: 3. Cena sprzeda¿y: 17.67 PLN.
 Sprzedano "Wyka³aczki" w iloœæ sztuk: -7. Cena sprzeda¿y: -41.23 PLN.
 Sprzedano "Chustaeczka" w iloœæ sztuk: 1. Cena sprzeda¿y: 2.5 PLN.
+Sprzedano "Lody" w iloœæ sztuk: 1. Cena sprzeda¿y: 6.9 PLN.
+Z konta odjêto: -400.0 PLN.
+Do konta dodano: 550.0 PLN.

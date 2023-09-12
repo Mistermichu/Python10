@@ -177,25 +177,17 @@ def buy(account_balance, history, inventory, product, price, quantity, selling_p
     return purchase_price
 
 
-def balance(history):
-    amount = None
-    while not isinstance(amount, float):
-        try:
-            balance_message = "Podaj kwote do dodania/odjecia z konta: "
-            amount = decimal_count_check(amount, balance_message)
-            amount_confirm = confirm(amount)
-            if amount_confirm == True:
-                if amount > 0:
-                    history_message = f"Do konta dodano: {amount} PLN."
-                    history.append(history_message)
-                elif amount < 0:
-                    history_message = f"Z konta odjęto: {amount} PLN."
-                    history.append(history_message)
-                return amount
-            if amount_confirm == False:
-                amount = None
-        except ValueError:
-            bad_response()
+def balance(history, new_balance, account_balance):
+    if account_balance + new_balance < 0:
+        return 0
+    amount = new_balance
+    if amount > 0:
+        history_message = f"Do konta dodano: {amount} PLN."
+        history.append(history_message)
+    elif amount < 0:
+        history_message = f"Z konta odjęto: {amount} PLN."
+        history.append(history_message)
+    return amount
 
 
 def list_overview(inventory):
