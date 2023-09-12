@@ -2,10 +2,19 @@
 <html>
 
 <head>
+    <title>Inventory Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-
+    <h1>Stan konta: {{ account_balance }} PLN</h1>
+    <h1>Magazyn:</h1>
+    <ul>
+        {% for item_name, item_data in inventory.items() %}
+        <li>{{ item_data.item_name }} - Cena: {{ item_data.list_price }} PLN - Dostępna ilość: {{ item_data.quantity }}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 
 </html>

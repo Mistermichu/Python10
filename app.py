@@ -1,10 +1,17 @@
 from flask import Flask, render_template
+from Data_store import FileHandler
+
+data_handler = FileHandler("history.txt", "balance.txt", "inventory.json")
+
+app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    # Tutaj możesz wstawić kod do pobierania stanu konta, magazynu itp.
-    return render_template('index.html')
+    account_balance = data_handler.account_balance
+    inventory = data_handler.inventory
+
+    return render_template('index.html', account_balance=account_balance, inventory=inventory)
 
 
 @app.route('/historia/')
